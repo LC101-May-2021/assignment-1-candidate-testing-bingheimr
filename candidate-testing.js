@@ -32,26 +32,23 @@ let correctAnswers = [
   "Trajectory", 	
   "3"
   ];
-let candidateAnswers;
+let candidateAnswers = [];
 
 
 function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
-  for ([i] of questions) {
-
+  for (let i = 0; i < questions.length; i++) {
+    console.log(questions[i]);
+    let candidateAnswer = input.question("Provide your answer here: ");
+    candidateAnswer = candidateAnswers.unshift(candidateAnswer);
   }
-    console.log(questions);
-
-  let answer = input.question("Provide your answer here: ");
-
-  candidateAnswer = answer;
 }
 
 function gradeQuiz(candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
 
-  if (candidateAnswer === correctAnswer) {
+  if (candidateAnswers === correctAnswers) {
 
     let grade = "Correct!";
     console.log(grade)
