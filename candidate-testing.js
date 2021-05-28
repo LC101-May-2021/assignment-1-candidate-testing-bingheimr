@@ -6,12 +6,6 @@ const input = require('readline-sync');
 
 let candidateName = "";
 
-function askForName() {
-  // TODO 1.1b: Ask for candidate's name //
-
-  let name = input.question("Please enter your name: ");
-  candidateName = name;
-}
 
 // TODO 1.2a: Define question, correctAnswer, and candidateAnswer //
 
@@ -33,8 +27,14 @@ let correctAnswers = [
   "3"
   ];
 let candidateAnswers = [];
-let numberCorrect = 0
+let numberCorrect = 0;
 
+function askForName() {
+  // TODO 1.1b: Ask for candidate's name //
+
+  let name = input.question("Please enter your name: ");
+  candidateName = name;
+}
 
 function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
@@ -42,17 +42,9 @@ function askQuestion() {
     console.log(questions[i]);
     let candidateAnswer = input.question("Your Answer: ");
     candidateAnswer = candidateAnswers.push(candidateAnswer);
-
-    let strCorrectAnswers = correctAnswers.toString()
-    let strCandidateAnswers = candidateAnswers.toString()
-    strCandidateAnswers.toLowerCase() === strCorrectAnswers.toLowerCase()
     
-    if (strCandidateAnswers[i] === strCorrectAnswers[i]) {
-      numberCorrect++
-    }
     console.log(`Correct Answer: ${correctAnswers[i]}`);
-    console.log("")
-    console.log(numberCorrect)
+    console.log("");
   }
 }
 
@@ -60,12 +52,20 @@ function gradeQuiz(candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
 
+  let strCorrectAnswers = correctAnswers.toString().toLowerCase();
+  let strCandidateAnswers = candidateAnswers.toString().toLowerCase();
+  
+  for (let i = 0; i < questions.length; i++) {
+    if (strCandidateAnswers[i] === strCorrectAnswers[i]) {
+      numberCorrect++;
+    }
+  }
   let grade = ((numberCorrect)/(questions.length)*100);
-  console.log(`>>> Overall Grade: ${grade}% (${numberCorrect} of ${questions.length} responses correct) <<<`)
+  console.log(`>>> Overall Grade: ${grade}% (${numberCorrect} of ${questions.length} responses correct) <<<`);
   if (grade < 80) {
-    console.log(">>> Status: FAILED <<<")
+    console.log(">>> Status: FAILED <<<");
   } else {
-  console.log(">>> Status: PASSED <<<")
+  console.log(">>> Status: PASSED <<<");
   return grade;
   }
 }
