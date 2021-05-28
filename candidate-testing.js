@@ -55,7 +55,7 @@ function gradeQuiz(candidateAnswers) {
   let strCorrectAnswers = correctAnswers.toString().toLowerCase();
   let strCandidateAnswers = candidateAnswers.toString().toLowerCase();
   
-  for (let i = 0; i < questions.length; i++) {
+  for (let i = 0; i < 5; i++) {
     if (strCandidateAnswers[i] === strCorrectAnswers[i]) {
       numberCorrect++;
     }
