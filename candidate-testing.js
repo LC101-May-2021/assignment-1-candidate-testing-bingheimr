@@ -64,7 +64,7 @@ function gradeQuiz(candidateAnswers) {
       console.log(numberCorrect);
     }
   }
-  let grade = (numberCorrect/questions.length)*100;
+  let grade = String((numberCorrect/questions.length)*100);
   console.log(`>>> Overall Grade: ${grade}% (${numberCorrect} of ${questions.length} responses correct) <<<`);
   if (grade < 80) {
     console.log(">>> Status: FAILED <<<");
