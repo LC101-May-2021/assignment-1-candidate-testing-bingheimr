@@ -38,7 +38,7 @@ function askForName() {
 
 function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < questions.length; i++) {
     console.log(questions[i]);
     let candidateAnswer = input.question("Your Answer: ");
     candidateAnswer = candidateAnswers.push(candidateAnswer);
@@ -51,16 +51,19 @@ function askQuestion() {
 function gradeQuiz(candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
-
-  let strCorrectAnswers = correctAnswers.toString().toLowerCase();
-  let strCandidateAnswers = candidateAnswers.toString().toLowerCase();
   
-  for (let i = 0; i < 5; i++) {
-    if (strCandidateAnswers[i] === strCorrectAnswers[i]) {
+  let strCorrectAnswers = correctAnswers.join(',').toLowerCase();
+  let strCandidateAnswers = candidateAnswers.join(',').toLowerCase();
+
+  candidateAnswers = strCandidateAnswers.split(',');
+  correctAnswers = strCorrectAnswers.split(',');
+  
+  for (let i = 0; i < questions.length; i++) {
+    if (candidateAnswers[i] === correctAnswers[i]) {
       numberCorrect++;
     }
   }
-  let grade = ((numberCorrect)/5)*100;
+  let grade = ((numberCorrect)/(questions.length)*100);
   console.log(`>>> Overall Grade: ${grade}% (${numberCorrect} of ${questions.length} responses correct) <<<`);
   if (grade < 80) {
     console.log(">>> Status: FAILED <<<");
