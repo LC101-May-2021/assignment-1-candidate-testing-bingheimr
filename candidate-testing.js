@@ -27,7 +27,6 @@ let correctAnswers = [
   "3"
   ];
 let candidateAnswers = [];
-let numberCorrect = 0;
 
 function askForName() {
   // TODO 1.1b: Ask for candidate's name //
@@ -51,7 +50,7 @@ function askQuestion() {
 function gradeQuiz(candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
-  
+  let numberCorrect = 0;
   let strCorrectAnswers = correctAnswers.join(',').toLowerCase();
   let strCandidateAnswers = candidateAnswers.join(',').toLowerCase();
 
@@ -61,9 +60,6 @@ function gradeQuiz(candidateAnswers) {
   for (let i = 0; i < questions.length; i++) {
     if (candidateAnswers[i] === correctAnswers[i]) {
       numberCorrect++;
-      if (numberCorrect = 5) {
-        break;
-      }
       console.log(numberCorrect);
     }
   }
