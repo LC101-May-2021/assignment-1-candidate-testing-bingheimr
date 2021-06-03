@@ -60,7 +60,6 @@ function gradeQuiz(candidateAnswers) {
   for (let i = 0; i < questions.length; i++) {
     if (candidateAnswers[i] === correctAnswers[i]) {
       numberCorrect++;
-      console.log(numberCorrect);
     }
   }
   let grade = (numberCorrect/questions.length)*100;
